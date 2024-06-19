@@ -2,18 +2,36 @@
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
-// Todo: create a function to generate a unique task id
+// created a function to generate a unique task id
 function generateTaskId() {
-
+   const taskId = nextId; 
+   nextId++;
+   localStorage.setItem('nextId', JSON.stringify(nextId));
+   return taskId 
 }
 
-// Todo: create a function to create a task card
+// created a function to create a task card
 function createTaskCard(task) {
+    const taskId = generateTaskId();
+    const taskCard = 
+    <div class="task-card" data-task-id="${taskId}">
+            <h3>${task.title}</h3>
+            <p>${task.description}</p>
+            <p>Due Date: ${task.dueDate}</p>
+            <button class="delete-task-btn">Delete Task</button>
+        </div>;
+    
+    $('.task-list').append(taskCard);
+        
+    task.id = taskId;
+    taskList.push(task);
+    localStorage.setItem('tasks', JSON.stringify(taskList));
 
 }
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
+    
 
 }
 
