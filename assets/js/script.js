@@ -31,8 +31,20 @@ function createTaskCard(task) {
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
-    
+    $('.task-list').empty();
+    taskList.forEach(task => {
+        createTaskCard(task);
+    });
 
+    $('.task-card').draggable({
+        revert: 'invalid',
+        start: function() {
+            $(this).addClass('dragging');
+        },
+        stop: function() {
+            $(this).removeClass('dragging');
+        }
+    })
 }
 
 // Todo: create a function to handle adding a new task
