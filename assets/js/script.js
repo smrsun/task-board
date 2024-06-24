@@ -18,33 +18,26 @@ function createTaskCard(task) {
     .attr('data-task-id', task.id);
     const cardTitle = $('<div>').addClass('card-title').text(task.name);
     const cardDescription = $('<p>').addClass('card-text').text(task.type);
+    const cardDueDate 
     
-    
-    
+
     const deleteBtn = $('<button>')
     .addClass('btn btn-danger delete')
     .text('Delete')
     .attr('data-task-id', task.id);
     deleteBtn.on('click', handleDeleteTask);
-//     const taskId = generateTaskId();
-//     const taskCard = generateTaskCard();
-//     <div class="task-card" data-task-id="${taskId}">
-//     <h3>${task.title}</h3>
-//     <p>${task.description}</p>
-//     <p>Due Date: ${task.dueDate}</p>
-//     <button class="delete-task-btn">Delete Task</button>
-//     </div>;
-// $(".task-list").append(taskCard);
 
-//     task.id = taskId;
-//     taskList.push(task);
-//     localStorage.setItem("tasks", JSON.stringify(taskList));
+    if(taskList.dueDate && taskList.status !== 'done') {
+        const due = dayjs();
+        const taskDueDate = dayjs(tasks.dueDate, 'MM/DD/YYYY');
 
-//     const deleteBtn = $('button')
-//     .addClass('btn btn-danger delete')
-//     .text('Delete')
-//     .attr('data-task-id')
-//     deleteBtn.on('click', handleDeleteTask)
+        
+
+    }
+
+  
+
+button.addEventListener('click', function('delete'), );
     
 }
 
@@ -89,5 +82,16 @@ function handleDrop(event, ui) {
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
+    printTaskItems
+
+    $('#taskCardDueDate').datepicker({
+        changeMonth: true,
+        changeYear: true,
+      });
+    
+      $('.lanes').droppable({
+        accept: '.draggable',
+        drop: handleDrop,
+      });
 
 });
